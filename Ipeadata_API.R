@@ -1,6 +1,6 @@
-# ============================= #
-# === DATA COLLECT FUNCTION === #
-# ============================= #
+# ============================================ #
+# === DATA COLLECT FUNCTION - IPEADATA API === #
+# ============================================ #
 
 # --- Script by Paulo Icaro --- #
 
@@ -47,5 +47,9 @@ ipeadata_api = function(url, httr = TRUE){
     
     # --- Successfull Case --- #
     else{message('Conexão bem sucedida ! Os dados foram coletados.')}
-    }
+  }
+  
+  
+  # --- Output --- #
+  return(api_connection)
   }
