@@ -41,13 +41,13 @@ ipeadata_api = function(url, httr = TRUE){
       # --- Fail Case --- #
       if(flag == 3 && is.null(api_connection)){
         message('Falha ao conectar com o API. Verifique sua conexão de internet.')
-        warning('Dica: Você carregou os pacotes necessários ?')
       } else { 
         message('A API pode estar indisponível no momento. Tente novamente mais tarde.')}
     }
     
     # --- Successfull Case --- #
-    else{message('Conexão bem sucedida ! Os dados foram coletados.')}
+    else{message('Conexão bem sucedida !\n')}
+    Sys.sleep(2)
     
     # --- Output --- #
     return(api_connection)
@@ -73,13 +73,13 @@ ipeadata_api = function(url, httr = TRUE){
       # --- Fail Case --- #
       if(flag == 3 && is.null(api_connection)){
         message('Falha ao conectar com o API. Verifique sua conexão de internet.')
-        warning('Dica: Você carregou os pacotes necessários ?')
       } else { 
         message('A API pode estar indisponível no momento. Tente novamente mais tarde.')}
     }
     
     # --- Successfull Case --- #
-    else{message('Conexão bem sucedida ! Os dados foram coletados.')}
+    else{message('Conexão bem sucedida !\n')}
+    Sys.sleep(2)
     
     # --- Output --- #
     return(api_connection)
