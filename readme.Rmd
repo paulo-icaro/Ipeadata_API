@@ -14,8 +14,8 @@ output: github_document
 ## Guidethrough
 
 <p>
-|       This library Us[en-us](readme.en-us.md)
+|       This library 
 
-|       Esta biblioteca Br[pt-br](leiame.pt-br.md)
+|       Esta biblioteca 
 </p>
 </divs>
