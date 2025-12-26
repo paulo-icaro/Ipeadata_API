@@ -1,0 +1,19 @@
+---
+title: "Acessing Ipeadata data via API"
+author: "Paulo Icaro"
+date: "2025-12-26"
+hidedate: true
+output: github_document
+---
+
+
+<!------------->
+<!-- SUMMARY -->
+<!------------->
+## Guidethrough
+
+<p>
+|       This library Us[en-us](readme.en-us.md)
+
+|       Esta biblioteca Br[pt-br](leiame.pt-br.md)
+</p>
