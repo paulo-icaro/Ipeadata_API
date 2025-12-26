@@ -3,15 +3,24 @@ Acessing Ipeadata data via API
 Paulo Icaro
 2025-12-26
 
-<divs> <!-------------> <!-- SUMMARY --> <!-------------> \##
-Guidethrough
+<!------------->
+
+<!-- SUMMARY -->
+
+<!------------->
+
+## Summary
 
 <p>
 
-      This library Us[en-us](readme.en-us.md)
+This repo is a useful to for accessing Ipeadata[^1] info through API.
+Its plataform contains several databases involving three main areas:
+Macroeconomics, Regional and Social data. Further details are available
+here:
 
-      Esta biblioteca Br[pt-br](leiame.pt-br.md)
+Readme - User Guide [en-us](readme.en-us.md)
 
+Leiame - Manual [pt-br](leiame.pt-br.md)
 </p>
 
-</divs>
+[^1]: <https://www.ipeadata.gov.br/Default.aspx>
