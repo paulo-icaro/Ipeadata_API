@@ -7,6 +7,7 @@ output: github_document
 ---
 
 
+<divs>
 <!------------->
 <!-- SUMMARY -->
 <!------------->
@@ -17,3 +18,4 @@ output: github_document
 
 |       Esta biblioteca Br[pt-br](leiame.pt-br.md)
 </p>
+</divs>
