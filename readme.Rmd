@@ -1,11 +1,10 @@
 ---
-title: "Acessing Ipeadata data via API"
+title: "Guidethrough"
 author: "Paulo Icaro"
 date: "2025-12-26"
 hidedate: true
 output: github_document
 ---
-
 
 
 <!------------->
@@ -14,9 +13,9 @@ output: github_document
 ## Summary
 
 <p>
-        This repo is a useful to for accessing Ipeadata^[https://www.ipeadata.gov.br/Default.aspx] info through API. Its plataform contains several databases involving three main areas: Macroeconomics, Regional and Social data. Further details are available here:
+        This repo is a useful tool that helps accessing Ipeadata^[https://www.ipeadata.gov.br/Default.aspx] info through API. This plataform contains several databases involving three main areas: Macroeconomics, Regional and Social data. Further details are available here:
         
-   Readme - User Guide [en-us](readme.en-us.md) 
+  Readme - User Guide [en-us](readme.en-us.md) 
 
   Leiame - Manual [pt-br](leiame.pt-br.md)
 </p>
