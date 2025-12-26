@@ -22,7 +22,7 @@ ipeadata_api = function(url, httr = TRUE){
   Sys.sleep(3)
   flag = 0
   
-  # --- API Connection - Using httr --- #
+  # --- API Connection Using httr --- #
   if(httr == TRUE){
     
     # --- API Connection --- #
@@ -41,15 +41,50 @@ ipeadata_api = function(url, httr = TRUE){
       # --- Fail Case --- #
       if(flag == 3 && is.null(api_connection)){
         message('Falha ao conectar com o API. Verifique sua conexão de internet.')
+        warning('Dica: Você carregou os pacotes necessários ?')
       } else { 
         message('A API pode estar indisponível no momento. Tente novamente mais tarde.')}
     }
     
     # --- Successfull Case --- #
     else{message('Conexão bem sucedida ! Os dados foram coletados.')}
+    
+    # --- Output --- #
+    return(api_connection)
   }
   
   
-  # --- Output --- #
-  return(api_connection)
+  # --- API Connection Using httr2 --- #
+  else if (httr == FALSE) {
+    
+    # --- API Connection --- #
+    api_connection = tryCatch(expr = request(base_url = url) %>% req_perform(),
+                              error = function(e){return(NULL)})
+    
+    # --- Connection Flags --- #
+    if(api_connection$status_code != 200 || is.null(api_connection)){
+      while(flag < 3 & (api_connection$status_code != 200 || is.null(api_connection))){
+        flag = flag + 1
+        api_connection = tryCatch(expr = GET(url = url), 
+                                  error = function(e){message("Falha na conexão. Tentando novamente ...\n")})
+        Sys.sleep(flag)           # Progressive delay
+      }
+      
+      # --- Fail Case --- #
+      if(flag == 3 && is.null(api_connection)){
+        message('Falha ao conectar com o API. Verifique sua conexão de internet.')
+        warning('Dica: Você carregou os pacotes necessários ?')
+      } else { 
+        message('A API pode estar indisponível no momento. Tente novamente mais tarde.')}
+    }
+    
+    # --- Successfull Case --- #
+    else{message('Conexão bem sucedida ! Os dados foram coletados.')}
+    
+    # --- Output --- #
+    return(api_connection)
   }
+  
+  # --- Not specified httr case --- #
+  else{message('Argumento httr inválido ! Use TRUE para httr ou FALSE para httr2.')}
+}
