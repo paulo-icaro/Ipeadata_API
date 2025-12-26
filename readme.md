@@ -1,4 +1,4 @@
-Acessing Ipeadata data via API
+Guidethrough
 ================
 Paulo Icaro
 2025-12-26
@@ -13,10 +13,10 @@ Paulo Icaro
 
 <p>
 
-This repo is a useful to for accessing Ipeadata[^1] info through API.
-Its plataform contains several databases involving three main areas:
-Macroeconomics, Regional and Social data. Further details are available
-here:
+This repo is a useful tool that helps accessing Ipeadata[^1] info
+through API. This plataform contains several databases involving three
+main areas: Macroeconomics, Regional and Social data. Further details
+are available here:
 
 Readme - User Guide [en-us](readme.en-us.md)
 
