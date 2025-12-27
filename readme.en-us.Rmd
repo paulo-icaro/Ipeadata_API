@@ -7,8 +7,42 @@ output: github_document
 ---
 
 
-## Extract Ipeadata data through API Tutorial
+## Extracting the data
 
 <p>
-      This tutorial focus on helping any research to get Ipeadata databases by acessing its API. 
+|      This tutorial focus on helping any research to get Ipeadata databases by acessing its API. In essence, this repo contains three script which are **Ipeadata_Query**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_Query.R], **Ipeadata_URL**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_URL.R] and **Ipeadata_API**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_API.R]. The last two function are the engine for accessing the data. The **Ipeadata_URL** function generates the necessary URL while the **Ipeadata_API** is responsible for extraction the data. Finally, the **Ipeadata_Query** function combines the former functions in order to make things easier.
+
+|      Put into few words, the researcher only has to put a few arguments in to the **Ipeadata_Query** function:
+* ipeadata_series_code: code of the series to be extracted.
+* ipeadata_series_name: name of the series to be extracted.
+* time_interval: period^[Of course there are several databases with different time frequencies. However, for a standard extraction the code only filters the data based on the years of the series.] (years) corresponding the data to be extracted.
+* source_github: this optional argument allows the researcher to choose whether to source the function from this repo or from a local folder.
+
+|      Let's see an example. Suppose we want to extract the Brazilian Price Index and also its GDP in the interval 2015-2025. Meanwhile the former has a monthly frequency, the latter is a annual series:
 </p>
+
+```{r Tutorial, echo = TRUE, warning = FALSE, message = FALSE, eval = TRUE, comment = ''}
+# ======================= #
+# === Data Extraction === #
+# ======================= #
+
+# --- Ipeadata Query Function --- #
+source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_Query.R')
+
+# --- Previous Info --- #
+series_code = c('PRECOS12_IPCA12', 'WEO_PIBWEOBRA')
+series_name = c('br_price_index', 'br_gdp')
+period = as.character(x = 2015:2025)
+
+
+database = ipeadata_query(series_code, series_name, period)
+print(head(database, 15), row.names = FALSE)
+```
+
+|       The fact that the two time-series have different frequencies imply an unbalanced dataset. This situation will not mean major problems once we take some precautions. For this instance, we will have a database with  131 monthly observations representing the price index series and 10 observations each representing a year always put into the first month of the dataset. In this case there will be no problem for all the data are extracted.
+|       Inversely, if we had picked the GDP series first, we would face significant issues. In fact, we would only have 10 observations: the yearly GDP series observations and the first month Price Index series of each year. 
+
+|       Therefore, two solutions to circumvent the problem arise:
+* When specifying the series to be collected, **the order of variable definition should always be such that the high-frequency series are always first**.
+
+* Import series together according to their temporal frequency. This alternative will require using the **Ipeadata_Query** function more than once.

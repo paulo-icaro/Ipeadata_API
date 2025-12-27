@@ -15,7 +15,7 @@ output: github_document
 <p>
         This repo is a useful tool that helps accessing Ipeadata^[https://www.ipeadata.gov.br/Default.aspx] info through API. This plataform contains several databases involving three main areas: Macroeconomics, Regional and Social data. Further details are available here:
         
-  Readme - User Guide [en-us](readme.en-us.md) 
+  Readme [User Guide](readme.en-us.md) 
 
-  Leiame - Manual [pt-br](leiame.pt-br.md)
+  Leiame [Manual](leiame.pt-br.md)
 </p>
