@@ -18,8 +18,6 @@ library(dplyr)        # Library for data manipulation
 # --- API Access Function --- #
 # --------------------------- #
 ipeadata_api = function(url, httr = TRUE){
-  message('Iniciando a conexão com a API ... \n')
-  Sys.sleep(3)
   flag = 0
   
   # --- API Connection Using httr --- #
@@ -35,12 +33,12 @@ ipeadata_api = function(url, httr = TRUE){
         flag = flag + 1
         api_connection = tryCatch(expr = GET(url = url), 
                                   error = function(e){message("Falha na conexão. Tentando novamente ...\n")})
-        Sys.sleep(flag)           # Progressive delay
+        Sys.sleep(max(1.5, flag))           # Progressive delay
         }
       
       # --- Fail Case --- #
       if(flag == 3 && is.null(api_connection)){
-        message('Falha ao conectar com o API. Verifique sua conexão de internet.')
+        message('Falha ao conectar com a API. Verifique sua conexão de internet.')
       } else { 
         message('A API pode estar indisponível no momento. Tente novamente mais tarde.')}
     }
@@ -48,6 +46,10 @@ ipeadata_api = function(url, httr = TRUE){
     # --- Successfull Case --- #
     else{message('Conexão bem sucedida !\n')}
     Sys.sleep(2)
+
+    # --- Converting Data to a Readable Format --- #
+    api_connection = rawToChar(api_connection$content)           # Raw to Json
+    api_connection = fromJSON(api_connection, flatten = TRUE)    # Json do Dataframe
     
     # --- Output --- #
     return(api_connection)
@@ -67,7 +69,7 @@ ipeadata_api = function(url, httr = TRUE){
         flag = flag + 1
         api_connection = tryCatch(expr = GET(url = url), 
                                   error = function(e){message("Falha na conexão. Tentando novamente ...\n")})
-        Sys.sleep(flag)           # Progressive delay
+        Sys.sleep(max(1.5, flag))           # Progressive delay
       }
       
       # --- Fail Case --- #
@@ -80,7 +82,10 @@ ipeadata_api = function(url, httr = TRUE){
     # --- Successfull Case --- #
     else{message('Conexão bem sucedida !\n')}
     Sys.sleep(2)
-    
+
+    # --- Converting Data to a Readable Format --- #
+    api_connection = rawToChar(api_connection$body)              # Raw  to Json
+    api_connection = fromJSON(api_conenction, flatten = TRUE)    # Json to Dataframe
     # --- Output --- #
     return(api_connection)
   }
