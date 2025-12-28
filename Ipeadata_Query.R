@@ -35,7 +35,8 @@ ipeadata_query = function(ipeadata_series_code, ipeadata_series_name, time_inter
   # --- Data Extraction --- #
   # ----------------------- #
   for(i in seq_along(ipeadata_series_code)){
-    
+
+    message(paste0('Extraindo ', '"',  ipeadata_series_name[i], '"'))
     
     tryCatch(expr = {
       
