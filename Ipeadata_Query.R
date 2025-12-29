@@ -43,11 +43,6 @@ ipeadata_query = function(ipeadata_series_code, ipeadata_series_name, time_inter
       # --- Extraction --- #
       ipeadata_dataset_raw = ipeadata_api(url = ipeadata_url(series_cod = ipeadata_series_code[i]))
       
-      # --- Data Manipulation --- #
-      ipeadata_dataset_raw = rawToChar(x = ipeadata_dataset_raw$content)
-      ipeadata_dataset_raw = fromJSON(ipeadata_dataset_raw, flatten = TRUE)$value
-      ipeadata_dataset_raw = ipeadata_dataset_raw[c(2,3)] %>% filter(substr(VALDATA, start = 1, stop = 4) %in% c(time_interval))
-      
       # --- Grouping Columns --- #
       if(i == 1){ipeadata_dataset = ipeadata_dataset_raw}
       else{ipeadata_dataset = left_join(x = ipeadata_dataset, y = ipeadata_dataset_raw, by = join_by('VALDATA' == 'VALDATA'))}
