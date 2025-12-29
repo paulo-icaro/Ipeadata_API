@@ -42,6 +42,7 @@ ipeadata_query = function(ipeadata_series_code, ipeadata_series_name, time_inter
       
       # --- Extraction --- #
       ipeadata_dataset_raw = ipeadata_api(url = ipeadata_url(series_cod = ipeadata_series_code[i]))
+      ipeadata_dataset_raw = ipeadata_dataset_raw[c(2,3)] %>% filter(substr(VALDATA, start = 1, stop = 4) %in% c(time_interval))
       
       # --- Grouping Columns --- #
       if(i == 1){ipeadata_dataset = ipeadata_dataset_raw}
@@ -51,8 +52,8 @@ ipeadata_query = function(ipeadata_series_code, ipeadata_series_name, time_inter
       if(i == length(ipeadata_series_name)){colnames(ipeadata_dataset) = c('data', ipeadata_series_name)}
       },
       
-      error = function(e){stop('Uma ou mais funções não estão disponíveis ou não há conexão de internet. Verifique sua conexão ou importe as funções de um diretório local.', call. = FALSE)
-    })
+      error = function(e){stop('Uma ou mais funções não estão disponíveis ou não há conexão de internet. Verifique sua conexão ou importe as funções de um diretório local.', call. = FALSE)}
+      )
   }
   
   # -------------- #    

@@ -48,8 +48,8 @@ ipeadata_api = function(url, httr = TRUE){
     Sys.sleep(2)
 
     # --- Converting Data to a Readable Format --- #
-    api_connection = rawToChar(api_connection$content)           # Raw to Json
-    api_connection = fromJSON(api_connection, flatten = TRUE)    # Json do Dataframe
+    api_connection = rawToChar(api_connection$content)             
+    api_connection = fromJSON(api_connection, flatten = TRUE)$value
     
     # --- Output --- #
     return(api_connection)
@@ -67,7 +67,7 @@ ipeadata_api = function(url, httr = TRUE){
     if(api_connection$status_code != 200 || is.null(api_connection)){
       while(flag < 3 & (api_connection$status_code != 200 || is.null(api_connection))){
         flag = flag + 1
-        api_connection = tryCatch(expr = GET(url = url), 
+        api_connection = tryCatch(expr = request(base_url = url) %>% req_perform(), 
                                   error = function(e){message("Falha na conexão. Tentando novamente ...\n")})
         Sys.sleep(max(1.5, flag))           # Progressive delay
       }
