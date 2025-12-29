@@ -84,8 +84,9 @@ ipeadata_api = function(url, httr = TRUE){
     Sys.sleep(2)
 
     # --- Converting Data to a Readable Format --- #
-    api_connection = rawToChar(api_connection$body)              # Raw  to Json
-    api_connection = fromJSON(api_conenction, flatten = TRUE)    # Json to Dataframe
+    api_connection = rawToChar(api_connection$body)
+    api_connection = fromJSON(api_connection, flatten = TRUE)$value
+    
     # --- Output --- #
     return(api_connection)
   }
