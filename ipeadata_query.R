@@ -14,12 +14,12 @@ ipeadata_query = function(ipeadata_series_code, ipeadata_series_name, time_inter
   # --- Source Auxiliary Functions --- #
   # ---------------------------------- #
   if(source_github == TRUE){
-    tryCatch(expr = suppressWarnings(source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_API.R')),
+    tryCatch(expr = suppressWarnings(source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/ipeadata_api.R')),
              error = function(e){message('Não foi possível acessar a função Ipeadata_API')})
     
     Sys.sleep(1.5)
     
-    tryCatch(expr = suppressWarnings(source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_URL.R')),
+    tryCatch(expr = suppressWarnings(source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/ipeadata_url.R')),
       error = function(e){message('Não foi possível acessar a função Ipeadata_URL')})
     
     Sys.sleep(1.5)
