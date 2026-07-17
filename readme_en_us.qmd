@@ -1,0 +1,63 @@
+---
+title: "Accessing Ipeadata data via API"
+format:
+  gfm: default
+  pdf:
+    pdf-engine: pdflatex
+    header-includes: 
+    - \usepackage{fvextra}
+    - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}, fontsize=\small}
+  
+    - \usepackage{tcolorbox}
+    - \newtcolorbox{functioncard}{
+        colback=red!5,
+        colframe=red!70!black,
+        arc=2mm,
+        boxrule=0.8pt}
+  html:
+    css: stylesheet.css
+    
+editor: source
+---
+
+
+## Extracting the data
+
+<p>
+|      This tutorial is intended to help researchers retrieve data from Ipeadata by acessing its API. In essence, this repository contains three script: **Ipeadata_Query**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_Query.R], **Ipeadata_URL**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_URL.R] and **Ipeadata_API**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_API.R]. The latter two functions forme the core of the data retrieval process. Specifically, **Ipeadata_URL** generates the appropriate API request URL, while the **Ipeadata_API** collects the data. Finally, the **Ipeadata_Query** function combines theses functions into a single interface, making data extraction considerably easier.
+
+{{< include includes/ipeadata_query.qmd >}}
+
+|      Put into few words, the researcher only needs to provide a few arguments to the **Ipeadata_Query** function:
+* ipeadata_series_code: code of the series to be extracted.
+* ipeadata_series_name: name of the series to be extracted.
+* time_interval: period^[Naturally, Ipeadata provides databasets with different temporal frequencies. However, under the default extraction procedure, the data are filtered solely according to the years covered by the selected series.] (years) corresponding the data to be extracted.
+* source_github: this optional argument allows the researcher to choose whether to source the function from this repo or from a local folder.
+
+|      Let's consider an example. Suppose we want to extract the Brazilian Price Index and also its GDP for the period 2015-2025. While the former is a monthly series, the latter is only available at an annual frequency.
+</p>
+
+```{r Tutorial, echo = TRUE, warning = FALSE, message = FALSE, eval = TRUE, comment = ''}
+# ======================= #
+# === Data Extraction === #
+# ======================= #
+
+# --- Ipeadata Query Function --- #
+source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_Query.R')
+
+# --- Previous Info --- #
+series_code = c('PRECOS12_IPCA12', 'WEO_PIBWEOBRA')
+series_name = c('br_price_index', 'br_gdp')
+period = as.character(x = 2015:2025)
+
+
+database = ipeadata_query(series_code, series_name, period)
+print(head(database, 15), row.names = FALSE)
+```
+
+|       The fact that the two time-series have different frequencies imply an unbalanced dataset. This does not pose a major problem, provided some precautions are taken. In this example, the resulting dataset contains 131 monthly observations for the price index series and 10 annual observations, with each annual value assigned to the first month of the of its corresponding year. Under these circumstances, no information is lost, since all observations from both series are retained.
+|       Conversely, if the GDP series were selected first, significant problems would arise. In that case, the resulting dataset would contain only 10 observations corresponding to the annual GDP values and the first month Price Index of each year. Consequently, most of the monthly info from Price Index series would be discarded.
+
+|       Therefore, two approaches can be adopted to avoid this issue:
+* When specifying the series to be retrieved, **always define the variables so that the highest-frequency series is listed first**.
+* Retrieve series separetely according to their temporal frequency. This approach requires calling the **Ipeadata_Query** function more than once.
