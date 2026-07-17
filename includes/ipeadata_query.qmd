@@ -1,0 +1,26 @@
+<!------------------------------------------->
+<!--- Detalhamento Função Github Document --->
+<!------------------------------------------->
+:::{.content-visible when-format = 'gfm'}
+```r
+ipeadata_query (ipeadata_series_code, ipeadata_series_name, time_interval, source_github = TRUE)
+```
+:::
+  
+<!------------------------------->
+<!--- Detalhamento Função PDF --->
+<!------------------------------->
+:::{.content-visible when-format = 'pdf'}
+\begin{functioncard}
+\texttt{$\textbf{ipeadata\_query} (ipeadata\_series\_code, ipeadata\_series\_name, time\_interval, source\_github = TRUE)$}
+\end{functioncard}
+:::
+  
+<!-------------------------------->
+<!--- Detalhamento Função HTML --->
+<!-------------------------------->
+:::{.content-visible when-format = 'html'}
+<div class = 'function_card'> 
+ipeadata_query (ipeadata_series_code, ipeadata_series_name, time_interval, source_github = TRUE)
+</div>
+:::
