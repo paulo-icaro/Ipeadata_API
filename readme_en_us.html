@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="extracting-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-the-data">Extracting the data</h2>
 <p>
-</p><div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This tutorial is intended to help researchers retrieve data from Ipeadata by acessing its API. In essence, this repository contains three script: <strong>Ipeadata_Query</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <strong>Ipeadata_URL</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and <strong>Ipeadata_API</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The latter two functions forme the core of the data retrieval process. Specifically, <strong>Ipeadata_URL</strong> generates the appropriate API request URL, while the <strong>Ipeadata_API</strong> collects the data. Finally, the <strong>Ipeadata_Query</strong> function combines theses functions into a single interface, making data extraction considerably easier.</div>
+</p><div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This tutorial is intended to help researchers retrieve data from Ipeadata by acessing its API. In essence, this repository contains three script: <strong>Ipeadata_Query</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <strong>Ipeadata_URL</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and <strong>Ipeadata_API</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The latter two functions form the core of the data retrieval process. Specifically, <strong>Ipeadata_URL</strong> generates the appropriate API request URL, while the <strong>Ipeadata_API</strong> collects the data. Finally, the <strong>Ipeadata_Query</strong> function combines theses functions into a single interface, making data extraction considerably easier.</div>
 <!------------------------------------------->
 <!--- Detalhamento Função Github Document --->
 <!------------------------------------------->
@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ======================= #</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Ipeadata Query Function --- #</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">'https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_Query.R'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">'https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/ipeadata_query.R'</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Previous Info --- #</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>series_code <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'PRECOS12_IPCA12'</span>, <span class="st">'WEO_PIBWEOBRA'</span>)</span>
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>period <span class="ot">=</span> <span class="fu">as.character</span>(<span class="at">x =</span> <span class="dv">2015</span><span class="sc">:</span><span class="dv">2025</span>)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>database <span class="ot">=</span> <span class="fu">ipeadata_query</span>(series_code, series_name, period)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>database <span class="ot">=</span> <span class="fu">ipeadata_query</span>(series_code, series_name, period, <span class="at">source_github =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(database, <span class="dv">15</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                      data br_price_index   br_gdp
@@ -176,9 +176,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_Query.R<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_URL.R<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_API.R<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Naturally, Ipeadata provides databasets with different temporal frequencies. However, under the default extraction procedure, the data are filtered solely according to the years covered by the selected series.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>

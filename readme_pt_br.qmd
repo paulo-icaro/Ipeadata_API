@@ -23,7 +23,7 @@ editor: source
 ## Extraindo os dados
 
 <p>
-|       Este tutorial visa auxiliar pesquisadores a coletar bases de dados do Ipeadata disponíveis em sua API. Em sua essência, este repositório possui três scripts principais: **ipeadata_query**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_Query.R], **ipeadata_url**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_URL.R] e **ipeadata_aapi**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_API.R]. As duas últimas funções atuam em conjunto como a engrenagem para obtenção das bases de dados. Se por um lado **ipeadata_url** atua na criação das URLs onde os dados estão localizados, por outro **Ipeadata_API** é responsável por extrair a informação lá localizada. Por fim, a função **Ipeadata_Query** combina estas duas funções em uma única interface, tornando simples o processo de extração de dados.
+|       Este tutorial visa auxiliar pesquisadores a coletar bases de dados do Ipeadata disponíveis em sua API. Em sua essência, este repositório possui três scripts principais: **ipeadata_query**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R], **ipeadata_url**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R] e **ipeadata_aapi**^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R]. As duas últimas funções atuam em conjunto como a engrenagem para obtenção das bases de dados. Se por um lado **ipeadata_url** atua na criação das URLs onde os dados estão localizados, por outro **Ipeadata_API** é responsável por extrair a informação lá localizada. Por fim, a função **Ipeadata_Query** combina estas duas funções em uma única interface, tornando simples o processo de extração de dados.
 
 {{< include includes/ipeadata_query.qmd >}}
 
@@ -42,7 +42,7 @@ editor: source
 # ======================= #
 
 # --- Ipeadata Query Function --- #
-source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_Query.R')
+source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/ipeadata_query.R')
 
 # --- Previous Info --- #
 series_code = c('PRECOS12_IPCA12', 'WEO_PIBWEOBRA')
@@ -50,7 +50,7 @@ series_name = c('br_price_index', 'br_gdp')
 period = as.character(x = 2015:2025)
 
 
-database = ipeadata_query(series_code, series_name, period)
+database = ipeadata_query(series_code, series_name, period, source_github = TRUE)
 print(head(database, 15), row.names = FALSE)
 ```
 

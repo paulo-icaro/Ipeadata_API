@@ -8,8 +8,8 @@
      This tutorial is intended to help researchers retrieve data from
 Ipeadata by acessing its API. In essence, this repository contains three
 script: **Ipeadata_Query**[^1], **Ipeadata_URL**[^2] and
-**Ipeadata_API**[^3]. The latter two functions forme the core of the
-data retrieval process. Specifically, **Ipeadata_URL** generates the
+**Ipeadata_API**[^3]. The latter two functions form the core of the data
+retrieval process. Specifically, **Ipeadata_URL** generates the
 appropriate API request URL, while the **Ipeadata_API** collects the
 data. Finally, the **Ipeadata_Query** function combines theses functions
 into a single interface, making data extraction considerably easier.
@@ -59,7 +59,7 @@ frequency.
 # ======================= #
 
 # --- Ipeadata Query Function --- #
-source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_Query.R')
+source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/ipeadata_query.R')
 
 # --- Previous Info --- #
 series_code = c('PRECOS12_IPCA12', 'WEO_PIBWEOBRA')
@@ -67,7 +67,7 @@ series_name = c('br_price_index', 'br_gdp')
 period = as.character(x = 2015:2025)
 
 
-database = ipeadata_query(series_code, series_name, period)
+database = ipeadata_query(series_code, series_name, period, source_github = TRUE)
 print(head(database, 15), row.names = FALSE)
 ```
 
@@ -109,11 +109,11 @@ info from Price Index series would be discarded.
   approach requires calling the **Ipeadata_Query** function more than
   once.
 
-[^1]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_Query.R
+[^1]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R
 
-[^2]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_URL.R
+[^2]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R
 
-[^3]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_API.R
+[^3]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R
 
 [^4]: Naturally, Ipeadata provides databasets with different temporal
     frequencies. However, under the default extraction procedure, the

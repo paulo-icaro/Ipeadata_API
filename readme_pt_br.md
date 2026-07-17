@@ -61,7 +61,7 @@ possui frequência anual.
 # ======================= #
 
 # --- Ipeadata Query Function --- #
-source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/Ipeadata_Query.R')
+source('https://raw.githubusercontent.com/paulo-icaro/Ipeadata_API/refs/heads/main/ipeadata_query.R')
 
 # --- Previous Info --- #
 series_code = c('PRECOS12_IPCA12', 'WEO_PIBWEOBRA')
@@ -69,7 +69,7 @@ series_name = c('br_price_index', 'br_gdp')
 period = as.character(x = 2015:2025)
 
 
-database = ipeadata_query(series_code, series_name, period)
+database = ipeadata_query(series_code, series_name, period, source_github = TRUE)
 print(head(database, 15), row.names = FALSE)
 ```
 
@@ -116,11 +116,11 @@ o caso da série de preços.
 
 </p>
 
-[^1]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_Query.R
+[^1]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R
 
-[^2]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_URL.R
+[^2]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R
 
-[^3]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/Ipeadata_API.R
+[^3]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R
 
 [^4]: Certamente, existem diversas bases de dados com diferentes
     frequências. No entanto, para uma extração padronizada o código
