@@ -24,7 +24,7 @@ editor: source
 ## Extracting the data
 
 <p>
-|      This tutorial is intended to help researchers retrieve data from Ipeadata by acessing its API. In essence, this repository contains three script: [**ipeadata_query**]^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R], [**ipeadata_url**]^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R] and [**ipeadata_api**]^[https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R]. The latter two functions form the core of the data retrieval process. Specifically, **ipeadata_url** generates the appropriate API request URL, while the **ipeadata_api** collects the data. Finally, the **ipeadata_query** function combines theses functions into a single interface, making data extraction considerably easier.
+|      This tutorial is intended to help researchers retrieve data from Ipeadata by acessing its API. In essence, this repository contains three script: [**ipeadata_query**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R), [**ipeadata_url**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R) and [**ipeadata_api**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R). The latter two functions form the core of the data retrieval process. Specifically, **ipeadata_url** generates the appropriate API request URL, while the **ipeadata_api** collects the data. Finally, the **ipeadata_query** function combines theses functions into a single interface, making data extraction considerably easier.
 
 {{< include includes/ipeadata_query.qmd >}}
 

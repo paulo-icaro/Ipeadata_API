@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="extraindo-os-dados" class="level2">
 <h2 class="anchored" data-anchor-id="extraindo-os-dados">Extraindo os dados</h2>
 <p>
-</p><div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Este tutorial visa auxiliar pesquisadores a coletar bases de dados do Ipeadata disponíveis em sua API. Em sua essência, este repositório possui três scripts principais: <strong>ipeadata_query</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <strong>ipeadata_url</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> e <strong>ipeadata_aapi</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. As duas últimas funções atuam em conjunto como a engrenagem para obtenção das bases de dados. Se por um lado <strong>ipeadata_url</strong> atua na criação das URLs onde os dados estão localizados, por outro <strong>Ipeadata_API</strong> é responsável por extrair a informação lá localizada. Por fim, a função <strong>Ipeadata_Query</strong> combina estas duas funções em uma única interface, tornando simples o processo de extração de dados.</div>
+</p><div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Este tutorial visa auxiliar pesquisadores a coletar bases de dados do Ipeadata disponíveis em sua API. Em sua essência, este repositório possui três scripts principais: <a href="https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R"><strong>ipeadata_query</strong></a>, <a href="https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R"><strong>ipeadata_url</strong></a> e <a href="https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R"><strong>ipeadata_api</strong></a>. As duas últimas funções atuam em conjunto como a engrenagem para obtenção das bases de dados. Se por um lado <strong>ipeadata_url</strong> atua na criação das URLs onde os dados estão localizados, por outro <strong>ipeadata_api</strong> é responsável por extrair a informação lá localizada. Por fim, a função <strong>ipeadata_query</strong> combina estas duas funções em uma única interface, tornando simples o processo de extração de dados.</div>
 <!------------------------------------------->
 <!--- Detalhamento Função Github Document --->
 <!------------------------------------------->
@@ -119,11 +119,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="function_card">
 <p>ipeadata_query (ipeadata_series_code, ipeadata_series_name, time_interval, source_github = TRUE)</p>
 </div>
-<div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Os argumentos da função <strong>Ipeadata_Query</strong> são:</div>
+<div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Os argumentos da função <strong>ipeadata_query</strong> são:</div>
 <ul>
 <li>ipeadata_series_code: codigo das séries a serem extraidas.</li>
 <li>ipeadata_series_name: nome das séries a serem extraidas.</li>
-<li>time_interval: período<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> (ano) correspondente ao dado a ser extraído.</li>
+<li>time_interval: período<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (ano) correspondente ao dado a ser extraído.</li>
 <li>source_github: Este argumento é opcional e permite ao pesquisador escolher acessar a função diretamente deste diretório ou de uma cópia das funções disponíveis em sua máquina local.</li>
 </ul>
 <div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vejamos um exemplo. Suponha que desejamos coletar os dados referente ao Índice de Preços (IPCA) e ao PIB brasileiro no período 2015-2025. Enquanto a série de preços possui frequência mensal, o PIB possui frequência anual.</div>
@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="line-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dessa maneira duas soluções para contornar o problema surgem:</div>
 <ul>
 <li>Ao informar as séries a serem coletadas, a ordem de definição das variáveis devem sempre ser feita de modo que as séries de alta-frequência sejam sempre priorizadas.</li>
-<li>Importar séries juntas de acordo com sua frequência temporal. Nessa alternativa será necessário utilizar a função <strong>Ipeadata_Query</strong> mais de uma vez.</li>
+<li>Importar séries juntas de acordo com sua frequência temporal. Nessa alternativa será necessário utilizar a função <strong>ipeadata_query</strong> mais de uma vez.</li>
 </ul>
 <p></p>
 </section>
@@ -178,10 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Certamente, existem diversas bases de dados com diferentes frequências. No entanto, para uma extração padronizada o código somente irá filtrar os dados baseado no ano da série.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Certamente, existem diversas bases de dados com diferentes frequências. No entanto, para uma extração padronizada o código somente irá filtrar os dados baseado no ano da série.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->

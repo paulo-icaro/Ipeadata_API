@@ -7,14 +7,17 @@
 
       Este tutorial visa auxiliar pesquisadores a coletar bases de dados
 do Ipeadata disponíveis em sua API. Em sua essência, este repositório
-possui três scripts principais: **ipeadata_query**[^1],
-**ipeadata_url**[^2] e **ipeadata_aapi**[^3]. As duas últimas funções
-atuam em conjunto como a engrenagem para obtenção das bases de dados. Se
-por um lado **ipeadata_url** atua na criação das URLs onde os dados
-estão localizados, por outro **Ipeadata_API** é responsável por extrair
-a informação lá localizada. Por fim, a função **Ipeadata_Query** combina
-estas duas funções em uma única interface, tornando simples o processo
-de extração de dados.
+possui três scripts principais:
+[**ipeadata_query**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R),
+[**ipeadata_url**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R)
+e
+[**ipeadata_api**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R).
+As duas últimas funções atuam em conjunto como a engrenagem para
+obtenção das bases de dados. Se por um lado **ipeadata_url** atua na
+criação das URLs onde os dados estão localizados, por outro
+**ipeadata_api** é responsável por extrair a informação lá localizada.
+Por fim, a função **ipeadata_query** combina estas duas funções em uma
+única interface, tornando simples o processo de extração de dados.
 
 <!------------------------------------------->
 
@@ -38,11 +41,11 @@ ipeadata_query (ipeadata_series_code, ipeadata_series_name, time_interval, sourc
 
 <!-------------------------------->
 
-      Os argumentos da função **Ipeadata_Query** são:
+      Os argumentos da função **ipeadata_query** são:
 
 - ipeadata_series_code: codigo das séries a serem extraidas.
 - ipeadata_series_name: nome das séries a serem extraidas.
-- time_interval: período[^4] (ano) correspondente ao dado a ser
+- time_interval: período[^1] (ano) correspondente ao dado a ser
   extraído.
 - source_github: Este argumento é opcional e permite ao pesquisador
   escolher acessar a função diretamente deste diretório ou de uma cópia
@@ -111,17 +114,11 @@ o caso da série de preços.
   variáveis devem sempre ser feita de modo que as séries de
   alta-frequência sejam sempre priorizadas.
 - Importar séries juntas de acordo com sua frequência temporal. Nessa
-  alternativa será necessário utilizar a função **Ipeadata_Query** mais
+  alternativa será necessário utilizar a função **ipeadata_query** mais
   de uma vez.
 
 </p>
 
-[^1]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R
-
-[^2]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R
-
-[^3]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R
-
-[^4]: Certamente, existem diversas bases de dados com diferentes
+[^1]: Certamente, existem diversas bases de dados com diferentes
     frequências. No entanto, para uma extração padronizada o código
     somente irá filtrar os dados baseado no ano da série.

@@ -7,12 +7,16 @@
 
      This tutorial is intended to help researchers retrieve data from
 Ipeadata by acessing its API. In essence, this repository contains three
-script: **Ipeadata_Query**[^1], **Ipeadata_URL**[^2] and
-**Ipeadata_API**[^3]. The latter two functions form the core of the data
-retrieval process. Specifically, **Ipeadata_URL** generates the
-appropriate API request URL, while the **Ipeadata_API** collects the
-data. Finally, the **Ipeadata_Query** function combines theses functions
-into a single interface, making data extraction considerably easier.
+script:
+[**ipeadata_query**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R),
+[**ipeadata_url**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R)
+and
+[**ipeadata_api**](https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R).
+The latter two functions form the core of the data retrieval process.
+Specifically, **ipeadata_url** generates the appropriate API request
+URL, while the **ipeadata_api** collects the data. Finally, the
+**ipeadata_query** function combines theses functions into a single
+interface, making data extraction considerably easier.
 
 <!------------------------------------------->
 
@@ -37,11 +41,11 @@ ipeadata_query (ipeadata_series_code, ipeadata_series_name, time_interval, sourc
 <!-------------------------------->
 
      Put into few words, the researcher only needs to provide a few
-arguments to the **Ipeadata_Query** function:
+arguments to the **ipeadata_query** function:
 
 - ipeadata_series_code: code of the series to be extracted.
 - ipeadata_series_name: name of the series to be extracted.
-- time_interval: period[^4] (years) corresponding the data to be
+- time_interval: period[^1] (years) corresponding the data to be
   extracted.
 - source_github: this optional argument allows the researcher to choose
   whether to source the function from this repo or from a local folder.
@@ -106,16 +110,10 @@ info from Price Index series would be discarded.
 - When specifying the series to be retrieved, **always define the
   variables so that the highest-frequency series is listed first**.
 - Retrieve series separetely according to their temporal frequency. This
-  approach requires calling the **Ipeadata_Query** function more than
+  approach requires calling the **ipeadata_query** function more than
   once.
 
-[^1]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_query.R
-
-[^2]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_url.R
-
-[^3]: https://github.com/paulo-icaro/Ipeadata_API/blob/main/ipeadata_api.R
-
-[^4]: Naturally, Ipeadata provides databasets with different temporal
+[^1]: Naturally, Ipeadata provides databasets with different temporal
     frequencies. However, under the default extraction procedure, the
     data are filtered solely according to the years covered by the
     selected series.
