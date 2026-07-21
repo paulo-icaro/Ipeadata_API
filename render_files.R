@@ -27,4 +27,4 @@ for (i in seq_along(files)){
 # --------------- #
 # --- Limpeza --- #
 # --------------- #
-rm(files, formats, i)
+rm(files, formats, i, j)
